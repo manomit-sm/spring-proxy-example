@@ -25,7 +25,7 @@ public class SpringProxyApplication {
 		return new ApplicationRunner() {
 			@Override
 			public void run(ApplicationArguments args) throws Exception {
-				var defaultCustomer = new DefaultCustomserService();
+				var defaultCustomer = new DefaultCustomerService();
 
 				final CustomerService proxyInstance = (CustomerService) Proxy.newProxyInstance(
 						defaultCustomer.getClass().getClassLoader(),
@@ -57,7 +57,7 @@ public class SpringProxyApplication {
 	@Reflective
 	@interface MyTransactional { }
 
-	class DefaultCustomserService implements CustomerService {
+	static class DefaultCustomerService implements CustomerService {
 
 		@Override
 		public void create() {
